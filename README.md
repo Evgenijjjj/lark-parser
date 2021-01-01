@@ -11,3 +11,6 @@ MacOS 11.0.1
 5. Написать код в <input_file_name>.txt
 6. ```python3 parser.py <input_file_name>.txt <output_file_name>.png```
 7. Результат выполнения: абстрактное синтаксическое дерево находится в файле <output_file_name>.png
+
+## Абстрактное дерево для  `input.txt`
+<img src="https://github.com/Evgenijjjj/lark-parser/blob/master/output.png">
