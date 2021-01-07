@@ -21,7 +21,7 @@ grammar = r"""
     function_call_params: atoms ("," atoms)*
 
     function_body: "{" (function_suit ";" | condition_statement)* "}"
-    function_suit: return_statement | variable_statement | function_call | NUMBER | atoms
+    function_suit: return_statement | variable_statement | function_call
 
     variable_assignment_statement: PARAM_NAME "=" variable_value
     variable_statement: "var"? variable_assignment_statement
@@ -30,8 +30,7 @@ grammar = r"""
     
     atoms: atom_op ((add_op | mul_op) atoms)?
     atom: function_call | NUMBER | PARAM_NAME
-    atom_op: postfix_atom_op | prefix_atom_op | pow_atom_op
-    postfix_atom_op: atom ("--" | "++")?
+    atom_op: prefix_atom_op | pow_atom_op
     prefix_atom_op: ("--" | "++")? atom
     pow_atom_op: atom "**" atom
     
