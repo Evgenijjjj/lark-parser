@@ -25,8 +25,8 @@ grammar = r"""
 
     variable_assignment_statement: PARAM_NAME "=" variable_value
     variable_statement: "var"? variable_assignment_statement
-    variable_value: (atoms | atoms_and_or_expression)
-    return_statement: "return" (atoms | atoms_and_or_expression)
+    variable_value: (atoms | atoms_expression_and_comp_op)
+    return_statement: "return" (atoms | atoms_expression_and_comp_op)
     
     atoms: atom_op ((add_op | mul_op) atoms)?
     atom: function_call | NUMBER | PARAM_NAME
@@ -34,10 +34,13 @@ grammar = r"""
     prefix_atom_op: ("--" | "++")? atom
     pow_atom_op: atom "**" atom
     
-    atoms_and_or_expression: atoms_expression ((AND | OR) atoms_expression)?
+    atoms_expression_and_comp_op: atoms_and_or_expression | atoms_brackets_comp_op
+    atoms_brackets: "(" atoms_and_or_expression ")" 
+    atoms_brackets_comp_op: ((atoms_brackets ((AND | OR| comp_op) atoms_brackets)?))
+    atoms_and_or_expression: ((atoms_expression ((AND | OR) atoms_expression)?) | ("(" atoms_and_or_expression ")"))
     atoms_expression: atoms ((comp_op) atoms)?
-    if_statement: "if" "(" (atoms_and_or_expression)* ")" function_body ["else" function_body]
-    while_statement: "while" "(" atoms_and_or_expression* ")" function_body
+    if_statement: "if" "(" (atoms_expression_and_comp_op)* ")" function_body ["else" function_body]
+    while_statement: "while" "(" atoms_expression_and_comp_op* ")" function_body
     condition_statement: if_statement | while_statement
     
     factor_op: "-"
