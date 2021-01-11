@@ -25,8 +25,8 @@ grammar = r"""
 
     variable_assignment_statement: PARAM_NAME "=" variable_value
     variable_statement: "var"? variable_assignment_statement
-    variable_value: atoms
-    return_statement: "return" atoms
+    variable_value: (atoms | atoms_and_or_expression)
+    return_statement: "return" (atoms | atoms_and_or_expression)
     
     atoms: atom_op ((add_op | mul_op) atoms)?
     atom: function_call | NUMBER | PARAM_NAME
