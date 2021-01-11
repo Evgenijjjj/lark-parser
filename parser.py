@@ -36,7 +36,7 @@ grammar = r"""
     
     atoms_expression_and_comp_op: atoms_and_or_expression | atoms_brackets_comp_op
     atoms_brackets: "(" atoms_and_or_expression ")" 
-    atoms_brackets_comp_op: ((atoms_brackets ((AND | OR| comp_op) atoms_brackets)?))
+    atoms_brackets_comp_op: ((atoms_brackets ((AND | OR| comp_op) atoms_brackets_comp_op)?))
     atoms_and_or_expression: ((atoms_expression ((AND | OR) atoms_expression)?) | ("(" atoms_and_or_expression ")"))
     atoms_expression: atoms ((comp_op) atoms)?
     if_statement: "if" "(" (atoms_expression_and_comp_op)* ")" function_body ["else" function_body]
