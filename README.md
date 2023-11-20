@@ -12,5 +12,5 @@ MacOS 11.0.1
 6. ```python3 parser.py <input_file_name>.txt <output_file_name>.png```
 7. Result of execution: the abstract syntax tree is in the <output_file_name>.png
 
-## Абстрактное дерево для  `input.txt`
+## abstract syntax tree for  `input.txt`
 <img src="https://github.com/Evgenijjjj/lark-parser/blob/master/output.png">
